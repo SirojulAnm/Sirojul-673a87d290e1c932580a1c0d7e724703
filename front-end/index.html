@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div id="div_login">
+            <h1>Login</h1>
+            <div id="message"></div>
+            <div>
+                <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />
+            </div>
+            <div>
+                <input type="password" class="textbox" id="txt_pwd" name="txt_pwd" placeholder="Password" />
+            </div>
+            <div>
+                <input type="button" value="Submit" name="but_submit" id="but_submit" />
+            </div>
+            <div>
+                <p id="message"></p>
+            </div>
+            <div><p><a href="register.html">Register</a></p></div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $("#but_submit").click(function () {
+            var username = $("#txt_uname").val().trim();
+            var password = $("#txt_pwd").val().trim();
+
+            if (username != "" && password != "") {
+                $.ajax({
+                    url: 'http://localhost/sirojul/back-end/api.php?apicall=login',
+                    type: 'post',
+                    data: { username: username, password: password },
+                    success: function (response) {  
+                        window.location = `http://localhost/sirojul/back-end/home.php?username=${username}&password=${password}`;
+                        console.log(`http://localhost/sirojul/back-end/home.php?username=${username}&password=${password}`)
+                    }
+                });
+            }
+        });
+    });
+</script>
