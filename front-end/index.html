@@ -43,7 +43,7 @@
 
             if (username != "" && password != "") {
                 $.ajax({
-                    url: 'http://localhost/sirojul/back-end/api.php?apicall=login',
+                    url: '../back-end/api.php?apicall=login',
                     type: 'post',
                     data: { username: username, password: password },
                     success: function (response) {  
